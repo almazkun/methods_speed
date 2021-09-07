@@ -2,15 +2,15 @@ import timeit
 
 
 def main():
-    num = 2**10
+    num = 2 ** 10
 
     t = timeit.Timer
     kwargs = dict(
-        function = t(lambda: divide(num)),
-        method = t(lambda: Method(num).divide()),
-        class_method = t(lambda: ClassMethod().divide(num)),
-        static_method = t(lambda: StaticMethod().divide(num)),
-        property_method = t(lambda: PropertyMethod(num).divide),
+        function=t(lambda: divide(num)),
+        method=t(lambda: Method(num).divide()),
+        class_method=t(lambda: ClassMethod().divide(num)),
+        static_method=t(lambda: StaticMethod().divide(num)),
+        property_method=t(lambda: PropertyMethod(num).divide),
     )
 
     for k, v in kwargs.items():
@@ -44,8 +44,8 @@ class Method:
         """
         return self.num / 2
 
-class ClassMethod:
 
+class ClassMethod:
     @classmethod
     def divide(cls, num: int) -> float:
         """Divide a number by 2
@@ -57,6 +57,7 @@ class ClassMethod:
             float: Half of it
         """
         return num / 2
+
 
 class StaticMethod:
     @staticmethod
@@ -70,6 +71,7 @@ class StaticMethod:
             float: Half of it
         """
         return num / 2
+
 
 class PropertyMethod:
     def __init__(self, num: int) -> None:
@@ -86,6 +88,7 @@ class PropertyMethod:
             float: Half of it
         """
         return self.num / 2
+
 
 if __name__ == "__main__":
     main()
